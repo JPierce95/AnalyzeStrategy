@@ -69,7 +69,6 @@ int blind(){ //Will simulate what happens when a person predetermines their gues
         int timesToRun = 0;
         char temp;
         vector <char> guesses;
-        game.newGame();
 
         inFile.open("guess.data");
         if(inFile.fail()){
@@ -89,7 +88,7 @@ int blind(){ //Will simulate what happens when a person predetermines their gues
                 }
 
                 for(int i = 0; i < timesToRun; i++){ //Uses two letters per run to make a blind run.
-                        cout << guesses.at(i) << " ";
+			game.newGame();
                         if(guesses.at(i) == 'a' || guesses.at(i) == 'A'){
                                 game.guessDoorA();
                         }
@@ -104,7 +103,6 @@ int blind(){ //Will simulate what happens when a person predetermines their gues
                                 break; // Exits the loop to avoid complications later down the line.
                         }
                         i++; //Moves on to the next piece of data in the vector.
-                        cout << guesses.at(i) << " next ";
                         if(guesses.at(i) == 'a' || guesses.at(i) == 'A'){
                                 game.guessDoorA();
                         }
@@ -120,7 +118,6 @@ int blind(){ //Will simulate what happens when a person predetermines their gues
                         }
                         if(game.isWinner()){
                                 wins++;
-                                cout << "win" << endl;
                         }
                 }
         }
