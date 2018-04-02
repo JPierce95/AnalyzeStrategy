@@ -74,51 +74,53 @@ int blind(){ //Will simulate what happens when a person predetermines their gues
         if(inFile.fail()){
                 cout << "Failed to open file" << endl;
         }
+        else{
 
-        while(!inFile.eof()){ //Inserts all of the letters into the guesses vector.
-                inFile >> temp;
-                guesses.push_back(temp);
-                length++;
-        }
+                while(!inFile.eof()){ //Inserts all of the letters into the guesses vector.
+                        inFile >> temp;
+                        guesses.push_back(temp);
+                        length++;
+                }
 
-        timesToRun = guesses.size(); //If the number of letters in the file is odd, this will make sure to only run it
-        if((guesses.size() % 2) != 0){
-                timesToRun--;
-        }
+                timesToRun = guesses.size(); //If the number of letters in the file is odd, this will make sure to only run it
+                if((guesses.size() % 2) != 0){
+                        timesToRun--;
+                }
 
-        for(int i = 0; i < timesToRun; i++){ //Uses two letters per run to make a blind run.
-        cout << guesses.at(i) << " ";
-                if(guesses.at(i) == 'a' || guesses.at(i) == 'A'){
-                        game.guessDoorA();
-                }
-                else if(guesses.at(i) == 'b' || guesses.at(i) == 'B'){
-                        game.guessDoorB();
-                }
-                else if(guesses.at(i) == 'c' || guesses.at(i) == 'C'){
-                        game.guessDoorC();
-                }
-                else{
-                        cout << "The letter " << guesses.at(i) << " at vectr position " << i << " is not valid."<< endl;
-                        break; // Exits the loop to avoid complications later down the line.
-                }
-                i++; //Moves on to the next piece of data in the vector.
-                cout << guesses.at(i) << " next ";
-                if(guesses.at(i) == 'a' || guesses.at(i) == 'A'){
-                        game.guessDoorA();
-                }
-                else if(guesses.at(i) == 'b' || guesses.at(i) == 'B'){
-                        game.guessDoorB();
-                }
-                else if(guesses.at(i) == 'c' || guesses.at(i) == 'C'){
-                        game.guessDoorC();
-                }
-                else{
-                        cout << "The letter " << guesses.at(i) << " at vector position " << i << " is not valid." <<endl;
-                        break;
-                }
-                if(game.isWinner()){
-                        wins++;
-                        cout << "win" << endl;
+                for(int i = 0; i < timesToRun; i++){ //Uses two letters per run to make a blind run.
+                        cout << guesses.at(i) << " ";
+                        if(guesses.at(i) == 'a' || guesses.at(i) == 'A'){
+                                game.guessDoorA();
+                        }
+                        else if(guesses.at(i) == 'b' || guesses.at(i) == 'B'){
+                                game.guessDoorB();
+                        }
+                        else if(guesses.at(i) == 'c' || guesses.at(i) == 'C'){
+                                game.guessDoorC();
+                        }
+                        else{
+                                cout << "The letter " << guesses.at(i) << " at vectr position " << i << " is not valid."<< endl;
+                                break; // Exits the loop to avoid complications later down the line.
+                        }
+                        i++; //Moves on to the next piece of data in the vector.
+                        cout << guesses.at(i) << " next ";
+                        if(guesses.at(i) == 'a' || guesses.at(i) == 'A'){
+                                game.guessDoorA();
+                        }
+                        else if(guesses.at(i) == 'b' || guesses.at(i) == 'B'){
+                                game.guessDoorB();
+                        }
+                        else if(guesses.at(i) == 'c' || guesses.at(i) == 'C'){
+                                game.guessDoorC();
+                        }
+                        else{
+                                cout << "The letter " << guesses.at(i) << " at vector position " << i << " is not valid." << endl;
+                                break;
+                        }
+                        if(game.isWinner()){
+                                wins++;
+                                cout << "win" << endl;
+                        }
                 }
         }
         return wins;
