@@ -199,13 +199,11 @@ int main(){
         for(int i = 0; i < 100; i++){
                 changeWins += change();
         }
-        for(int i = 0; i < 11; i++){//Since the blind method has 9 full games in it, I only repeat this method 11 times to get to 99 games.
-                blindWins += blind();
-        }
+	blindWins += blind();
 
         cout << "Using the 'stay' method, the correct door was guessed " << stayWins << " times out of 100." << endl;
         cout << "Using the 'change' method, the correct door was guessed " << changeWins << " times out of 100." << endl;
-        cout << "Using the 'blind' method, the correct door was guessed " << blindWins << " times out of 99." << endl;
+        cout << "Using the 'blind' method, the correct door was guessed " << blindWins << " times." << endl;
 
         cout << endl;
 
