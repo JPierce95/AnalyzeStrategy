@@ -15,7 +15,6 @@ int stay() { //Will simulate when a person stays on the same door.
         game.newGame();
         game.guessDoorA();
         game.guessDoorA();
-        }
         if (game.isWinner()) {
                 stayWins++;
         }
